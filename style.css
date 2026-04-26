@@ -20,24 +20,55 @@
     --shadow-heavy: rgba(0, 0, 0, 0.5);
 }
 
-.photo-gallery {
+
+
+.cake-container {
     display: flex;
-    flex-wrap: nowrap;
-    /* keeps 1 row */
-    justify-content: center;
-    /* centers the whole row */
+    flex-direction: column;
     align-items: center;
-    /* aligns images vertically */
-    gap: 10px;
-    margin-top: 211px;
+    justify-content: center;
+    margin: 30px auto;
 }
 
-.photo-gallery img {
+.photo-gallery {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.photo-gallery-track {
+    display: flex;
+    gap: 8px;
+    width: max-content;
+    /* important */
+    animation: scrollPhotos 20s linear infinite;
+}
+
+/* fixed size para walang jump */
+.photo-gallery-track img {
     width: 150px;
-    height: 70px;
+    height: 150px;
     object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.3s;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+/* 🔥 PERFECT LOOP (no gap fix) */
+@keyframes scrollPhotos {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-50% - 7.5px));
+    }
+}
+
+/* pause on hover */
+.photo-gallery:hover .photo-gallery-track {
+    animation-play-state: paused;
 }
 
 * {
@@ -289,13 +320,13 @@ body {
 
 .celebration-card {
     text-align: center;
-    padding: 30px;
+    padding: 8px;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 20px;
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 0 20px 40px var(--shadow-heavy);
-    max-width: 700px;
+    max-width: 800px;
     z-index: 10;
     /* Ensure card is above animations */
     animation: popIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
