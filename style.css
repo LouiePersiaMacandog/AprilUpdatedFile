@@ -320,7 +320,7 @@ body {
 
 .celebration-card {
     text-align: center;
-    padding: 50px;
+    padding: 10px;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 20px;
     backdrop-filter: blur(15px);
